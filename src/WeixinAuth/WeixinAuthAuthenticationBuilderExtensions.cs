@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+
 using Myvas.AspNetCore.Authentication;
 using Myvas.AspNetCore.Authentication.WeixinAuth.Internal;
+
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -35,6 +37,16 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.TryAddTransient<IWeixinAuthApi, WeixinAuthApi>();
 
             return builder.AddOAuth<WeixinAuthOptions, WeixinAuthHandler>(authenticationScheme, displayName, setupAction);
+        }
+        /// <summary>加入微信授权API</summary>
+        public static AuthenticationBuilder AddWeixinAuthApi(this AuthenticationBuilder builder)
+        {
+            if (builder == null)
+            {
+                throw new ArgumentNullException(nameof(builder));
+            }
+            builder.Services.TryAddTransient<IWeixinAuthApi, WeixinAuthApi>();
+            return builder;
         }
     }
 }

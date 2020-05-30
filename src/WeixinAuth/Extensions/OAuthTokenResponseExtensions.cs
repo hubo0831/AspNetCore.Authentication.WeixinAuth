@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Myvas.AspNetCore.Authentication.WeixinAuth.Internal
 {
-    internal static class OAuthTokenResponseExtensions
+    public static class OAuthTokenResponseExtensions
     {
         public static string GetUnionId(this OAuthTokenResponse response)
         {

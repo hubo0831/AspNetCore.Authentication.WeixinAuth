@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+
 using Newtonsoft.Json.Linq;
+
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -15,12 +17,16 @@ namespace Myvas.AspNetCore.Authentication.WeixinAuth.Internal
     internal class WeixinAuthApi : IWeixinAuthApi
     {
         protected ILogger Logger { get; }
-        protected IOptionsMonitor<WeixinAuthOptions> OptionsMonitor;
+        //protected IOptionsMonitor<WeixinAuthOptions> OptionsMonitor;
 
-        public WeixinAuthApi(IOptionsMonitor<WeixinAuthOptions> optionsMonitor, ILoggerFactory loggerFactory)
+        //public WeixinAuthApi(IOptionsMonitor<WeixinAuthOptions> optionsMonitor, ILoggerFactory loggerFactory)
+        //{
+        //    Logger = loggerFactory?.CreateLogger<WeixinAuthApi>() ?? throw new ArgumentNullException(nameof(loggerFactory));
+        //    OptionsMonitor = optionsMonitor ?? throw new ArgumentNullException(nameof(optionsMonitor));
+        //}
+        public WeixinAuthApi(ILoggerFactory loggerFactory)
         {
             Logger = loggerFactory?.CreateLogger<WeixinAuthApi>() ?? throw new ArgumentNullException(nameof(loggerFactory));
-            OptionsMonitor = optionsMonitor ?? throw new ArgumentNullException(nameof(optionsMonitor));
         }
 
         private static async Task<string> Display(HttpResponseMessage response)
